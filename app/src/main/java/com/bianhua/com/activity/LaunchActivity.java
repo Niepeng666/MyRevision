@@ -19,5 +19,7 @@ public class LaunchActivity extends WDActivity {
     @Override
     protected void initView() {
 
+
+
     }
 }

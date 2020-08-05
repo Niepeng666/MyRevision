@@ -1,37 +1,37 @@
 package com.bianhua.com.bean;
 
 public class Result<T> {
-    String status;
-    String message;
-    T result;
+    String code;
+    String des;
+    T data;
 
-    public Result(String status, String message, T result) {
-        this.status = status;
-        this.message = message;
-        this.result = result;
+    public Result(String code, String des, T data) {
+        this.code = code;
+        this.des = des;
+        this.data = data;
     }
 
-    public String getStatus() {
-        return status;
+    public String getCode() {
+        return code;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setCode(String code) {
+        this.code = code;
     }
 
-    public String getMessage() {
-        return message;
+    public String getDes() {
+        return des;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public void setDes(String des) {
+        this.des = des;
     }
 
-    public T getResult() {
-        return result;
+    public T getData() {
+        return data;
     }
 
-    public void setResult(T result) {
-        this.result = result;
+    public void setData(T data) {
+        this.data = data;
     }
 }

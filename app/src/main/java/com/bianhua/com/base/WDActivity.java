@@ -58,5 +58,5 @@ public abstract class WDActivity extends AppCompatActivity {
 
     }
 
-    public abstract void onCheckedChanged(RadioGroup group, int checkedId);
+
 }
