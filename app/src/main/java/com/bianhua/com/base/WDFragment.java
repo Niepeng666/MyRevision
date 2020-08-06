@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import androidx.fragment.app.Fragment;
 
 import com.bianhua.com.bean.SendMessageCommunitor;
+import com.gyf.immersionbar.ImmersionBar;
 
 
 public abstract class WDFragment extends Fragment {
@@ -22,6 +23,8 @@ public abstract class WDFragment extends Fragment {
 		View view = inflater.inflate(getLayoutId(),container,false);
 		context=getActivity();
 		initView();
+		//沉浸式状态栏
+		ImmersionBar.with(this).barAlpha(0.1f).init();
 		return view;
 	}
 
@@ -35,10 +38,5 @@ public abstract class WDFragment extends Fragment {
 	 * 初始化视图
 	 */
 	protected abstract void initView();
-	@Override
-	public void onAttach(Activity activity) {
-		super.onAttach(activity);
-		sendMessage = (SendMessageCommunitor) activity;
 
-	}
 }

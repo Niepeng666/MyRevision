@@ -8,6 +8,8 @@ import android.widget.RadioGroup;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.gyf.immersionbar.ImmersionBar;
+
 import butterknife.ButterKnife;
 
 
@@ -26,7 +28,9 @@ public abstract class WDActivity extends AppCompatActivity {
         initView();
         //全局设置竖屏
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        //
+        //沉浸式状态栏
+        ImmersionBar.with(this).barAlpha(0.1f).init();
+
         ButterKnife.bind(this);
     }
 

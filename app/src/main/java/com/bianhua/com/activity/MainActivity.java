@@ -1,32 +1,29 @@
 package com.bianhua.com.activity;
 
-import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.widget.FrameLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
-
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
-
 import com.bianhua.com.R;
 import com.bianhua.com.Utils.ActivityManager;
+import com.bianhua.com.Utils.DiaLog_Jihe.ViewUtils;
 import com.bianhua.com.base.WDActivity;
-import com.bianhua.com.bean.SendMessageCommunitor;
 import com.bianhua.com.fragment.CircleFragment;
 import com.bianhua.com.fragment.HomeFragment;
-import com.bianhua.com.fragment.MeFragment;
+import com.bianhua.com.fragment.MyFragment;
 import com.bianhua.com.fragment.SendFragment;
 import com.bianhua.com.fragment.ShareFragment;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
  * MainActivity 主页面
  */
-public class MainActivity extends WDActivity implements SendMessageCommunitor {
+public class MainActivity extends WDActivity  implements RadioGroup.OnCheckedChangeListener{
 
 
     @BindView(R.id.container)
@@ -43,46 +40,39 @@ public class MainActivity extends WDActivity implements SendMessageCommunitor {
     RadioButton meBtn;
     @BindView(R.id.bottom_menu)
     RadioGroup bottomMenu;
-    private HomeFragment homeFragment;
-    private CircleFragment circleFragment;
-    private MeFragment meFragment;
-    private SendFragment sendFragment;
-    private ShareFragment shareFragment;
-   Fragment currentFragment;
-
-
+   HomeFragment homeFragment;
+   CircleFragment circleFragment;
+   SendFragment sendFragment;
+    MyFragment myFragment;
+   ShareFragment shareFragment;
+    Fragment currentFragment;
     @Override
     protected int getLayoutId() {
         return R.layout.activity_main;
     }
 
-    /**
-     * 获取activity布局里的控件ID
-     */
     @Override
     protected void initView() {
+        ButterKnife.bind(this);
+        bottomMenu.setOnCheckedChangeListener(this);
         homeFragment = new HomeFragment();
         circleFragment = new CircleFragment();
-        meFragment = new MeFragment();
         sendFragment = new SendFragment();
+        myFragment = new MyFragment();
         shareFragment = new ShareFragment();
-        currentFragment = homeFragment;
+        currentFragment = homeFragment;     //需要给新建的空fragment附一个值，不然会报空指针。
         FragmentTransaction tx = getSupportFragmentManager().beginTransaction();
         tx.add(R.id.container, homeFragment)
                 .show(homeFragment).commit();
-
-
     }
-
-
-
+    @Override
     public void onCheckedChanged(RadioGroup group, int checkedId) {
         if (checkedId == R.id.home_btn) {
             showFragment(homeFragment);
         } else if (checkedId == R.id.circle_btn) {
             showFragment(circleFragment);
         }else if (checkedId == R.id.me_btn){
-            showFragment(meFragment);
+            showFragment(myFragment);
         }else if (checkedId==R.id.cart_btn){
             showFragment(sendFragment);
         }else if (checkedId== R.id.list_btn){
@@ -90,20 +80,6 @@ public class MainActivity extends WDActivity implements SendMessageCommunitor {
         }
     }
 
-    @Override
-    public void sendMessage(String msg) {
-            if ("mainselecet1".equals(msg)){
-                showFragment(homeFragment);
-            }else  if ("mainselecet1".equals(msg)){
-                showFragment(circleFragment);
-            }else  if ("mainselecet1".equals(msg)){
-                showFragment(sendFragment);
-            }else  if ("mainselecet1".equals(msg)){
-                showFragment(shareFragment);
-            }else  if ("mainselecet1".equals(msg)){
-                showFragment(meFragment);
-            }
-    }
 
 
     /**
@@ -121,6 +97,9 @@ public class MainActivity extends WDActivity implements SendMessageCommunitor {
             }
         }
     }
+
+
+
     private long firstime;
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
@@ -140,6 +119,5 @@ public class MainActivity extends WDActivity implements SendMessageCommunitor {
         return super.onKeyDown(keyCode, event);
 
     }
-
 
 }

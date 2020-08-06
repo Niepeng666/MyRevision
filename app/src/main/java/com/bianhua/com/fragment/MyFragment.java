@@ -5,10 +5,10 @@ import com.bianhua.com.base.WDFragment;
 
 /**
  * @author 聂俊鹏
- * @date 个人页面
+ * @date 个人页面       第五个fragment
  * qq:2241659414
  */
-public class MeFragment extends WDFragment {
+public class MyFragment extends WDFragment {
 
 
     @Override

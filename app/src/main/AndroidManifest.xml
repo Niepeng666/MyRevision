@@ -40,8 +40,8 @@
         <activity android:name=".activity.ForgetpasswordActivity"/>
         <activity android:name=".activity.ReisgerActivity" />
         <activity android:name=".activity.LaunchActivity" />
-        <activity android:name=".activity.MainActivity" />
-        <activity android:name=".activity.LoginActivity">
+        <activity android:name=".activity.LoginActivity" />
+        <activity android:name=".activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
