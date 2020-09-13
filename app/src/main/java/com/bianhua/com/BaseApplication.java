@@ -5,9 +5,7 @@ import android.content.Context;
 
 public class BaseApplication extends Application {
 
-    /**
-     * context 全局唯一的上下文
-     */
+
     private static Context context;
 
     @Override
@@ -15,8 +13,16 @@ public class BaseApplication extends Application {
         super.onCreate();
         context = this;
 
+
+
+
     }
 
+
+
+    /**
+     * context 全局唯一的上下文
+     */
     public static Context getContext() {
         return context;
     }
